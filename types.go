@@ -197,10 +197,11 @@ type Entry struct {
 }
 
 type Credential struct {
-	ApiKey   string
-	Secret   string
-	UID      string
-	Password string
+	ApiKey      string
+	Secret      string
+	UID         string
+	Password    string
+	AccessToken string
 }
 
 type HttpReq struct {

@@ -1,9 +1,11 @@
 package banexg
 
 import (
-	"github.com/banbox/banexg/utils"
-	"github.com/sasha-s/go-deadlock"
 	"time"
+
+	"github.com/sasha-s/go-deadlock"
+
+	"github.com/banbox/banexg/utils"
 )
 
 const (
@@ -88,6 +90,7 @@ const (
 	OptProxy           = "Proxy"
 	OptApiKey          = "ApiKey"
 	OptApiSecret       = "ApiSecret"
+	OptAccessToken     = "AccessToken"
 	OptAccCreds        = "Creds"
 	OptAccName         = "AccName"
 	OptUserAgent       = "UserAgent"

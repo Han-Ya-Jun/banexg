@@ -33,6 +33,9 @@ func (c *Credential) CheckFilled(keys map[string]bool) *errs.Error {
 	if c.Password == "" && keys["Password"] {
 		requires = append(requires, "Password")
 	}
+	if c.AccessToken == "" && keys["AccessToken"] {
+		requires = append(requires, "AccessToken")
+	}
 	if len(requires) > 0 {
 		return errs.NewMsg(errs.CodeCredsRequired, "credential required %v", requires)
 	}
@@ -41,5 +44,5 @@ func (c *Credential) CheckFilled(keys map[string]bool) *errs.Error {
 
 func IsContract(marketType string) bool {
 	return marketType == MarketFuture || marketType == MarketSwap ||
-		marketType == MarketLinear || marketType == MarketInverse
+			marketType == MarketLinear || marketType == MarketInverse
 }

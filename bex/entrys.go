@@ -5,15 +5,17 @@ import (
 	"github.com/banbox/banexg/binance"
 	"github.com/banbox/banexg/bybit"
 	"github.com/banbox/banexg/china"
+	"github.com/banbox/banexg/longportapp"
 	"github.com/banbox/banexg/errs"
 	"github.com/banbox/banexg/utils"
 )
 
 func init() {
 	newExgs = map[string]FuncNewExchange{
-		"binance": binance.NewExchange,
-		"bybit":   bybit.NewExchange,
-		"china":   china.NewExchange,
+		"binance":     binance.NewExchange,
+		"bybit":       bybit.NewExchange,
+		"china":       china.NewExchange,
+		"longportapp": longportapp.NewExchange,
 	}
 }
 

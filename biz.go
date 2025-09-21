@@ -950,7 +950,7 @@ func (e *Exchange) SetOnWsChan(cb FuncOnWsChan) {
 }
 
 func (e *Exchange) CalculateFee(symbol, odType, side string, amount float64, price float64, isMaker bool,
-	params map[string]interface{}) (*Fee, *errs.Error) {
+		params map[string]interface{}) (*Fee, *errs.Error) {
 	if odType == OdTypeMarket && isMaker {
 		return nil, errs.NewMsg(errs.CodeParamInvalid, "maker only is invalid for market order")
 	}
@@ -1040,7 +1040,7 @@ func (e *Exchange) IsContract(marketType string) bool {
 		marketType = e.MarketType
 	}
 	return marketType == MarketFuture || marketType == MarketSwap ||
-		marketType == MarketLinear || marketType == MarketInverse
+			marketType == MarketLinear || marketType == MarketInverse
 }
 
 func (e *Exchange) MilliSeconds() int64 {
@@ -1512,11 +1512,12 @@ func (e *Exchange) parseOptCreds() {
 	} else {
 		apiKey := utils.GetMapVal(e.Options, OptApiKey, "")
 		apiSecret := utils.GetMapVal(e.Options, OptApiSecret, "")
-		if apiKey != "" || apiSecret != "" {
+		accessToken := utils.GetMapVal(e.Options, OptAccessToken, "")
+		if apiKey != "" || apiSecret != "" || accessToken != "" {
 			e.DefAccName = "default"
 			e.Accounts[e.DefAccName] = &Account{
 				Name:         e.DefAccName,
-				Creds:        &Credential{ApiKey: apiKey, Secret: apiSecret},
+				Creds:        &Credential{ApiKey: apiKey, Secret: apiSecret, AccessToken: accessToken},
 				MarBalances:  map[string]*Balances{},
 				MarPositions: map[string][]*Position{},
 				Leverages:    map[string]int{},
